@@ -5,8 +5,63 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         DataContext="{Binding Source={StaticResource Locator}, Path=Main}"
         mc:Ignorable="d"
-        Title="NAV Sales per Salesperson" Height="450" Width="800">
+        Title="NAV Sales Chart" Height="370" Width="600" Icon="media/boot.png">
+    <Window.Resources>
+        <Style TargetType="ProgressBar">
+            <Style.Triggers>
+                <EventTrigger RoutedEvent="Loaded">
+                    <BeginStoryboard>
+                        <Storyboard TargetProperty="Height">
+                            <DoubleAnimation From="0" To="130" Duration="0:0:2.2" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
     <Grid>
-        <DataGrid ItemsSource="{Binding SpsArray}"/>
+        <Label HorizontalContentAlignment="Left" Content="Calculated Revenues per Salesperson, total " Margin="25,3" FontWeight="Bold" FontSize="18" />
+        <Label Content="{Binding SumAmounts}" HorizontalContentAlignment="Right" Margin="75,3" FontWeight="Bold" FontSize="18" BorderBrush="Black" ContentStringFormat="€ 0,000.00"/>
+        <ItemsControl Grid.Row="0" Grid.Column="0" ItemsSource="{Binding SpsArray}" BorderThickness="0,2,0,2" BorderBrush="Black" Margin="0,30,0,20">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Margin="10,10,10,10" FlowDirection="RightToLeft" />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Vertical">
+                        <Border BorderBrush="Black" BorderThickness="2" CornerRadius="5" Width="130" Height="110" Margin="5" VerticalAlignment="Top" >
+                            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <TextBlock TextWrapping="Wrap" Text="{Binding Name}" TextAlignment="Right" Margin="5,0" Height="15" Width="115">
+                                </TextBlock>
+                                <TextBlock TextWrapping="Wrap" Text="{Binding E_Mail}" TextAlignment="Right" Margin="5,0" Height="15" Width="115" TextDecorations="Underline" Foreground="#FF143DAA">
+                                </TextBlock>
+                                <Label HorizontalContentAlignment="Left" Content="{Binding Calcd_Current_Value_LCY, UpdateSourceTrigger=PropertyChanged}" Margin="5,3" FontWeight="Bold" FontSize="18" BorderThickness="0,2,0,0" BorderBrush="Black" ContentStringFormat="€ 0,000.00"/>
+                                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                                    <Button BorderThickness="0" Height="30" Width="30" Margin="10,0" Command="{Binding }">
+                                        <Button.Background>
+                                            <ImageBrush ImageSource="media/dislike.jpg"/>
+                                        </Button.Background>
+                                    </Button>
+                                    <Button BorderThickness="0" Height="30" Width="30" Margin="10,0" Command="{Binding }">
+                                        <Button.Background>
+                                            <ImageBrush ImageSource="media/like.jpg"/>
+                                        </Button.Background>
+                                    </Button>
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+                        <Grid Height="130">
+                            <ProgressBar Width="130" Orientation="Vertical" Value="{Binding Calcd_Current_Value_LCY}" Maximum="{Binding Main.SumAmounts, Source={StaticResource Locator}}" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="LightSteelBlue" VerticalAlignment="Bottom">
+                            </ProgressBar>
+                        </Grid>
+                    </StackPanel>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+        <TextBlock Text="group F - liu, lagelstorfer" Height="18" Foreground="#FF143DAA" VerticalAlignment="Bottom" HorizontalAlignment="Right">
+        </TextBlock>
     </Grid>
 </Window>

@@ -371,5 +371,12 @@
   <ItemGroup>
     <None Include="Web References\WebService\services.disco" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="media\dislike.jpg" />
+    <Resource Include="media\like.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="media\boot.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
