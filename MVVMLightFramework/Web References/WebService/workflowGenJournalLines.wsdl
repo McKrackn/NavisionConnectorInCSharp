@@ -1,0 +1,866 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:tns="urn:microsoft-dynamics-schemas/page/workflowgenjournallines" targetNamespace="urn:microsoft-dynamics-schemas/page/workflowgenjournallines" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema elementFormDefault="qualified" targetNamespace="urn:microsoft-dynamics-schemas/page/workflowgenjournallines" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:simpleType name="accountType">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="G_L_Account" />
+          <xsd:enumeration value="Customer" />
+          <xsd:enumeration value="Vendor" />
+          <xsd:enumeration value="Bank_Account" />
+          <xsd:enumeration value="Fixed_Asset" />
+          <xsd:enumeration value="IC_Partner" />
+          <xsd:enumeration value="Employee" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="documentType">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="_blank_" />
+          <xsd:enumeration value="Payment" />
+          <xsd:enumeration value="Invoice" />
+          <xsd:enumeration value="Credit_Memo" />
+          <xsd:enumeration value="Finance_Charge_Memo" />
+          <xsd:enumeration value="Reminder" />
+          <xsd:enumeration value="Refund" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="appliesToDocType">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="_blank_" />
+          <xsd:enumeration value="Payment" />
+          <xsd:enumeration value="Invoice" />
+          <xsd:enumeration value="Credit_Memo" />
+          <xsd:enumeration value="Finance_Charge_Memo" />
+          <xsd:enumeration value="Reminder" />
+          <xsd:enumeration value="Refund" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="vatPosting">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Automatic_VAT_Entry" />
+          <xsd:enumeration value="Manual_VAT_Entry" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="recurringMethod">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="_blank_" />
+          <xsd:enumeration value="F_Fixed" />
+          <xsd:enumeration value="V_Variable" />
+          <xsd:enumeration value="B_Balance" />
+          <xsd:enumeration value="RF_Reversing_Fixed" />
+          <xsd:enumeration value="RV_Reversing_Variable" />
+          <xsd:enumeration value="RB_Reversing_Balance" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="genPostingType">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="_blank_" />
+          <xsd:enumeration value="Purchase" />
+          <xsd:enumeration value="Sale" />
+          <xsd:enumeration value="Settlement" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="vatCalculationType">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Normal_VAT" />
+          <xsd:enumeration value="Reverse_Charge_VAT" />
+          <xsd:enumeration value="Full_VAT" />
+          <xsd:enumeration value="Sales_Tax" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="balAccountType">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="G_L_Account" />
+          <xsd:enumeration value="Customer" />
+          <xsd:enumeration value="Vendor" />
+          <xsd:enumeration value="Bank_Account" />
+          <xsd:enumeration value="Fixed_Asset" />
+          <xsd:enumeration value="IC_Partner" />
+          <xsd:enumeration value="Employee" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="balGenPostingType">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="_blank_" />
+          <xsd:enumeration value="Purchase" />
+          <xsd:enumeration value="Sale" />
+          <xsd:enumeration value="Settlement" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="balVatCalculationType">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Normal_VAT" />
+          <xsd:enumeration value="Reverse_Charge_VAT" />
+          <xsd:enumeration value="Full_VAT" />
+          <xsd:enumeration value="Sales_Tax" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="bankPaymentType">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="_blank_" />
+          <xsd:enumeration value="Computer_Check" />
+          <xsd:enumeration value="Manual_Check" />
+          <xsd:enumeration value="Electronic_Payment" />
+          <xsd:enumeration value="Electronic_Payment_IAT" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="sourceType">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="_blank_" />
+          <xsd:enumeration value="Customer" />
+          <xsd:enumeration value="Vendor" />
+          <xsd:enumeration value="Bank_Account" />
+          <xsd:enumeration value="Fixed_Asset" />
+          <xsd:enumeration value="IC_Partner" />
+          <xsd:enumeration value="Employee" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="additionalCurrencyPosting">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="None" />
+          <xsd:enumeration value="Amount_Only" />
+          <xsd:enumeration value="Additional_Currency_Amount_Only" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="icDirection">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Outgoing" />
+          <xsd:enumeration value="Incoming" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="jobLineType">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="_blank_" />
+          <xsd:enumeration value="Budget" />
+          <xsd:enumeration value="Billable" />
+          <xsd:enumeration value="Both_Budget_and_Billable" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="faPostingType">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="_blank_" />
+          <xsd:enumeration value="Acquisition_Cost" />
+          <xsd:enumeration value="Depreciation" />
+          <xsd:enumeration value="Write_Down" />
+          <xsd:enumeration value="Appreciation" />
+          <xsd:enumeration value="Custom_1" />
+          <xsd:enumeration value="Custom_2" />
+          <xsd:enumeration value="Disposal" />
+          <xsd:enumeration value="Maintenance" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="workflowGenJournalLines">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" name="Key" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="journalTemplateName" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="lineNumber" type="xsd:int" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="accountType" type="tns:accountType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="accountNumber" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="postingDate" type="xsd:date" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="documentType" type="tns:documentType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="documentNumber" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="description" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="vatPercent" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="balAccountNumber" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="currencyCode" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="amount" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="debitAmount" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="creditAmount" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="amountLcy" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="balanceLcy" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="currencyFactor" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="salesPurchLcy" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="profitLcy" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="invDiscountLcy" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="billToPayToNumber" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="postingGroup" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="shortcutDimension1Code" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="shortcutDimension2Code" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="salespersPurchCode" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="sourceCode" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="systemCreatedEntry" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="onHold" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="appliesToDocType" type="tns:appliesToDocType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="appliesToDocNumber" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="dueDate" type="xsd:date" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="pmtDiscountDate" type="xsd:date" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="paymentDiscountPercent" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="jobNumber" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="quantity" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="vatAmount" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="vatPosting" type="tns:vatPosting" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="paymentTermsCode" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="appliesToId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="businessUnitCode" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="journalBatchName" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="reasonCode" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="recurringMethod" type="tns:recurringMethod" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="expirationDate" type="xsd:date" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="recurringFrequency" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="allocatedAmtLcy" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="genPostingType" type="tns:genPostingType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="genBusPostingGroup" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="genProdPostingGroup" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="vatCalculationType" type="tns:vatCalculationType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="eu3PartyTrade" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="allowApplication" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="balAccountType" type="tns:balAccountType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="balGenPostingType" type="tns:balGenPostingType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="balGenBusPostingGroup" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="balGenProdPostingGroup" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="balVatCalculationType" type="tns:balVatCalculationType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="balVatPercent" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="balVatAmount" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="bankPaymentType" type="tns:bankPaymentType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="vatBaseAmount" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="balVatBaseAmount" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="correction" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="checkPrinted" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="documentDate" type="xsd:date" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="externalDocumentNumber" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="sourceType" type="tns:sourceType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="sourceNumber" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="postingNumberSeries" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="taxAreaCode" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="taxLiable" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="taxGroupCode" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="useTax" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="balTaxAreaCode" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="balTaxLiable" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="balTaxGroupCode" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="balUseTax" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="vatBusPostingGroup" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="vatProdPostingGroup" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="balVatBusPostingGroup" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="balVatProdPostingGroup" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="additionalCurrencyPosting" type="tns:additionalCurrencyPosting" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="faAddCurrencyFactor" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="sourceCurrencyCode" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="sourceCurrencyAmount" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="sourceCurrVatBaseAmount" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="sourceCurrVatAmount" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="vatBaseDiscountPercent" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="vatAmountLcy" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="vatBaseAmountLcy" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="balVatAmountLcy" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="balVatBaseAmountLcy" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="reversingEntry" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="allowZeroAmountPosting" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="shipToOrderAddressCode" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="vatDifference" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="balVatDifference" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="icPartnerCode" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="icDirection" type="tns:icDirection" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="icPartnerGLAccNumber" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="icPartnerTransactionNumber" type="xsd:int" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="sellToBuyFromNumber" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="vatRegistrationNumber" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="countryRegionCode" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="prepayment" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="financialVoid" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="incomingDocumentEntryNumber" type="xsd:int" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="creditorNumber" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="paymentReference" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="paymentMethodCode" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="appliesToExtDocNumber" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="recipientBankAccount" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="messageToRecipient" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="exportedToPaymentFile" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="hasPaymentExportError" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="dimensionSetId" type="xsd:int" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="creditCardNumber" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="jobTaskNumber" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="jobUnitPriceLcy" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="jobTotalPriceLcy" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="jobQuantity" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="jobUnitCostLcy" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="jobLineDiscountPercent" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="jobLineDiscAmountLcy" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="jobUnitOfMeasureCode" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="jobLineType" type="tns:jobLineType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="jobUnitPrice" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="jobTotalPrice" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="jobUnitCost" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="jobTotalCost" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="jobLineDiscountAmount" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="jobLineAmount" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="jobTotalCostLcy" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="jobLineAmountLcy" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="jobCurrencyFactor" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="jobCurrencyCode" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="jobPlanningLineNumber" type="xsd:int" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="jobRemainingQty" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="directDebitMandateId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="dataExchEntryNumber" type="xsd:int" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="payerInformation" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="transactionInformation" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="dataExchLineNumber" type="xsd:int" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="appliedAutomatically" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="deferralCode" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="deferralLineNumber" type="xsd:int" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="campaignNumber" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="prodOrderNumber" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="faPostingDate" type="xsd:date" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="faPostingType" type="tns:faPostingType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="depreciationBookCode" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="salvageValue" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="numberOfDepreciationDays" type="xsd:int" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="deprUntilFaPostingDate" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="deprAcquisitionCost" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="maintenanceCode" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="insuranceNumber" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="budgetedFaNumber" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="duplicateInDepreciationBook" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="useDuplicationList" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="faReclassificationEntry" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="faErrorEntryNumber" type="xsd:int" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="indexEntry" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="sourceLineNumber" type="xsd:int" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="comment" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="checkExported" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="checkTransmitted" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="id" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="accountId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="customerId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="appliesToInvoiceId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="contactGraphId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="lastModifiedDatetime" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="journalBatchId" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="workflowGenJournalLines_List">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="unbounded" name="workflowGenJournalLines" type="tns:workflowGenJournalLines" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:simpleType name="workflowGenJournalLines_Fields">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="journalTemplateName" />
+          <xsd:enumeration value="lineNumber" />
+          <xsd:enumeration value="accountType" />
+          <xsd:enumeration value="accountNumber" />
+          <xsd:enumeration value="postingDate" />
+          <xsd:enumeration value="documentType" />
+          <xsd:enumeration value="documentNumber" />
+          <xsd:enumeration value="description" />
+          <xsd:enumeration value="vatPercent" />
+          <xsd:enumeration value="balAccountNumber" />
+          <xsd:enumeration value="currencyCode" />
+          <xsd:enumeration value="amount" />
+          <xsd:enumeration value="debitAmount" />
+          <xsd:enumeration value="creditAmount" />
+          <xsd:enumeration value="amountLcy" />
+          <xsd:enumeration value="balanceLcy" />
+          <xsd:enumeration value="currencyFactor" />
+          <xsd:enumeration value="salesPurchLcy" />
+          <xsd:enumeration value="profitLcy" />
+          <xsd:enumeration value="invDiscountLcy" />
+          <xsd:enumeration value="billToPayToNumber" />
+          <xsd:enumeration value="postingGroup" />
+          <xsd:enumeration value="shortcutDimension1Code" />
+          <xsd:enumeration value="shortcutDimension2Code" />
+          <xsd:enumeration value="salespersPurchCode" />
+          <xsd:enumeration value="sourceCode" />
+          <xsd:enumeration value="systemCreatedEntry" />
+          <xsd:enumeration value="onHold" />
+          <xsd:enumeration value="appliesToDocType" />
+          <xsd:enumeration value="appliesToDocNumber" />
+          <xsd:enumeration value="dueDate" />
+          <xsd:enumeration value="pmtDiscountDate" />
+          <xsd:enumeration value="paymentDiscountPercent" />
+          <xsd:enumeration value="jobNumber" />
+          <xsd:enumeration value="quantity" />
+          <xsd:enumeration value="vatAmount" />
+          <xsd:enumeration value="vatPosting" />
+          <xsd:enumeration value="paymentTermsCode" />
+          <xsd:enumeration value="appliesToId" />
+          <xsd:enumeration value="businessUnitCode" />
+          <xsd:enumeration value="journalBatchName" />
+          <xsd:enumeration value="reasonCode" />
+          <xsd:enumeration value="recurringMethod" />
+          <xsd:enumeration value="expirationDate" />
+          <xsd:enumeration value="recurringFrequency" />
+          <xsd:enumeration value="allocatedAmtLcy" />
+          <xsd:enumeration value="genPostingType" />
+          <xsd:enumeration value="genBusPostingGroup" />
+          <xsd:enumeration value="genProdPostingGroup" />
+          <xsd:enumeration value="vatCalculationType" />
+          <xsd:enumeration value="eu3PartyTrade" />
+          <xsd:enumeration value="allowApplication" />
+          <xsd:enumeration value="balAccountType" />
+          <xsd:enumeration value="balGenPostingType" />
+          <xsd:enumeration value="balGenBusPostingGroup" />
+          <xsd:enumeration value="balGenProdPostingGroup" />
+          <xsd:enumeration value="balVatCalculationType" />
+          <xsd:enumeration value="balVatPercent" />
+          <xsd:enumeration value="balVatAmount" />
+          <xsd:enumeration value="bankPaymentType" />
+          <xsd:enumeration value="vatBaseAmount" />
+          <xsd:enumeration value="balVatBaseAmount" />
+          <xsd:enumeration value="correction" />
+          <xsd:enumeration value="checkPrinted" />
+          <xsd:enumeration value="documentDate" />
+          <xsd:enumeration value="externalDocumentNumber" />
+          <xsd:enumeration value="sourceType" />
+          <xsd:enumeration value="sourceNumber" />
+          <xsd:enumeration value="postingNumberSeries" />
+          <xsd:enumeration value="taxAreaCode" />
+          <xsd:enumeration value="taxLiable" />
+          <xsd:enumeration value="taxGroupCode" />
+          <xsd:enumeration value="useTax" />
+          <xsd:enumeration value="balTaxAreaCode" />
+          <xsd:enumeration value="balTaxLiable" />
+          <xsd:enumeration value="balTaxGroupCode" />
+          <xsd:enumeration value="balUseTax" />
+          <xsd:enumeration value="vatBusPostingGroup" />
+          <xsd:enumeration value="vatProdPostingGroup" />
+          <xsd:enumeration value="balVatBusPostingGroup" />
+          <xsd:enumeration value="balVatProdPostingGroup" />
+          <xsd:enumeration value="additionalCurrencyPosting" />
+          <xsd:enumeration value="faAddCurrencyFactor" />
+          <xsd:enumeration value="sourceCurrencyCode" />
+          <xsd:enumeration value="sourceCurrencyAmount" />
+          <xsd:enumeration value="sourceCurrVatBaseAmount" />
+          <xsd:enumeration value="sourceCurrVatAmount" />
+          <xsd:enumeration value="vatBaseDiscountPercent" />
+          <xsd:enumeration value="vatAmountLcy" />
+          <xsd:enumeration value="vatBaseAmountLcy" />
+          <xsd:enumeration value="balVatAmountLcy" />
+          <xsd:enumeration value="balVatBaseAmountLcy" />
+          <xsd:enumeration value="reversingEntry" />
+          <xsd:enumeration value="allowZeroAmountPosting" />
+          <xsd:enumeration value="shipToOrderAddressCode" />
+          <xsd:enumeration value="vatDifference" />
+          <xsd:enumeration value="balVatDifference" />
+          <xsd:enumeration value="icPartnerCode" />
+          <xsd:enumeration value="icDirection" />
+          <xsd:enumeration value="icPartnerGLAccNumber" />
+          <xsd:enumeration value="icPartnerTransactionNumber" />
+          <xsd:enumeration value="sellToBuyFromNumber" />
+          <xsd:enumeration value="vatRegistrationNumber" />
+          <xsd:enumeration value="countryRegionCode" />
+          <xsd:enumeration value="prepayment" />
+          <xsd:enumeration value="financialVoid" />
+          <xsd:enumeration value="incomingDocumentEntryNumber" />
+          <xsd:enumeration value="creditorNumber" />
+          <xsd:enumeration value="paymentReference" />
+          <xsd:enumeration value="paymentMethodCode" />
+          <xsd:enumeration value="appliesToExtDocNumber" />
+          <xsd:enumeration value="recipientBankAccount" />
+          <xsd:enumeration value="messageToRecipient" />
+          <xsd:enumeration value="exportedToPaymentFile" />
+          <xsd:enumeration value="hasPaymentExportError" />
+          <xsd:enumeration value="dimensionSetId" />
+          <xsd:enumeration value="creditCardNumber" />
+          <xsd:enumeration value="jobTaskNumber" />
+          <xsd:enumeration value="jobUnitPriceLcy" />
+          <xsd:enumeration value="jobTotalPriceLcy" />
+          <xsd:enumeration value="jobQuantity" />
+          <xsd:enumeration value="jobUnitCostLcy" />
+          <xsd:enumeration value="jobLineDiscountPercent" />
+          <xsd:enumeration value="jobLineDiscAmountLcy" />
+          <xsd:enumeration value="jobUnitOfMeasureCode" />
+          <xsd:enumeration value="jobLineType" />
+          <xsd:enumeration value="jobUnitPrice" />
+          <xsd:enumeration value="jobTotalPrice" />
+          <xsd:enumeration value="jobUnitCost" />
+          <xsd:enumeration value="jobTotalCost" />
+          <xsd:enumeration value="jobLineDiscountAmount" />
+          <xsd:enumeration value="jobLineAmount" />
+          <xsd:enumeration value="jobTotalCostLcy" />
+          <xsd:enumeration value="jobLineAmountLcy" />
+          <xsd:enumeration value="jobCurrencyFactor" />
+          <xsd:enumeration value="jobCurrencyCode" />
+          <xsd:enumeration value="jobPlanningLineNumber" />
+          <xsd:enumeration value="jobRemainingQty" />
+          <xsd:enumeration value="directDebitMandateId" />
+          <xsd:enumeration value="dataExchEntryNumber" />
+          <xsd:enumeration value="payerInformation" />
+          <xsd:enumeration value="transactionInformation" />
+          <xsd:enumeration value="dataExchLineNumber" />
+          <xsd:enumeration value="appliedAutomatically" />
+          <xsd:enumeration value="deferralCode" />
+          <xsd:enumeration value="deferralLineNumber" />
+          <xsd:enumeration value="campaignNumber" />
+          <xsd:enumeration value="prodOrderNumber" />
+          <xsd:enumeration value="faPostingDate" />
+          <xsd:enumeration value="faPostingType" />
+          <xsd:enumeration value="depreciationBookCode" />
+          <xsd:enumeration value="salvageValue" />
+          <xsd:enumeration value="numberOfDepreciationDays" />
+          <xsd:enumeration value="deprUntilFaPostingDate" />
+          <xsd:enumeration value="deprAcquisitionCost" />
+          <xsd:enumeration value="maintenanceCode" />
+          <xsd:enumeration value="insuranceNumber" />
+          <xsd:enumeration value="budgetedFaNumber" />
+          <xsd:enumeration value="duplicateInDepreciationBook" />
+          <xsd:enumeration value="useDuplicationList" />
+          <xsd:enumeration value="faReclassificationEntry" />
+          <xsd:enumeration value="faErrorEntryNumber" />
+          <xsd:enumeration value="indexEntry" />
+          <xsd:enumeration value="sourceLineNumber" />
+          <xsd:enumeration value="comment" />
+          <xsd:enumeration value="checkExported" />
+          <xsd:enumeration value="checkTransmitted" />
+          <xsd:enumeration value="id" />
+          <xsd:enumeration value="accountId" />
+          <xsd:enumeration value="customerId" />
+          <xsd:enumeration value="appliesToInvoiceId" />
+          <xsd:enumeration value="contactGraphId" />
+          <xsd:enumeration value="lastModifiedDatetime" />
+          <xsd:enumeration value="journalBatchId" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="workflowGenJournalLines_Filter">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="Field" type="tns:workflowGenJournalLines_Fields" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="Criteria" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="Read">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="journalTemplateName" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="journalBatchName" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="lineNumber" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Read_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="1" name="workflowGenJournalLines" type="tns:workflowGenJournalLines" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ReadByRecId">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="recId" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ReadByRecId_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="1" name="workflowGenJournalLines" type="tns:workflowGenJournalLines" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ReadMultiple">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="unbounded" name="filter" type="tns:workflowGenJournalLines_Filter" />
+            <xsd:element minOccurs="0" maxOccurs="1" name="bookmarkKey" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="setSize" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ReadMultiple_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="1" name="ReadMultiple_Result" type="tns:workflowGenJournalLines_List" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="IsUpdated">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Key" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="IsUpdated_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="IsUpdated_Result" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetRecIdFromKey">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Key" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetRecIdFromKey_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="GetRecIdFromKey_Result" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Create">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="workflowGenJournalLines" type="tns:workflowGenJournalLines" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Create_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="workflowGenJournalLines" type="tns:workflowGenJournalLines" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CreateMultiple">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="workflowGenJournalLines_List" type="tns:workflowGenJournalLines_List" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CreateMultiple_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="workflowGenJournalLines_List" type="tns:workflowGenJournalLines_List" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Update">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="workflowGenJournalLines" type="tns:workflowGenJournalLines" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Update_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="workflowGenJournalLines" type="tns:workflowGenJournalLines" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="UpdateMultiple">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="workflowGenJournalLines_List" type="tns:workflowGenJournalLines_List" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="UpdateMultiple_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="workflowGenJournalLines_List" type="tns:workflowGenJournalLines_List" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Delete">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Key" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Delete_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Delete_Result" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </types>
+  <message name="Read">
+    <part name="parameters" element="tns:Read" />
+  </message>
+  <message name="Read_Result">
+    <part name="parameters" element="tns:Read_Result" />
+  </message>
+  <message name="ReadByRecId">
+    <part name="parameters" element="tns:ReadByRecId" />
+  </message>
+  <message name="ReadByRecId_Result">
+    <part name="parameters" element="tns:ReadByRecId_Result" />
+  </message>
+  <message name="ReadMultiple">
+    <part name="parameters" element="tns:ReadMultiple" />
+  </message>
+  <message name="ReadMultiple_Result">
+    <part name="parameters" element="tns:ReadMultiple_Result" />
+  </message>
+  <message name="IsUpdated">
+    <part name="parameters" element="tns:IsUpdated" />
+  </message>
+  <message name="IsUpdated_Result">
+    <part name="parameters" element="tns:IsUpdated_Result" />
+  </message>
+  <message name="GetRecIdFromKey">
+    <part name="parameters" element="tns:GetRecIdFromKey" />
+  </message>
+  <message name="GetRecIdFromKey_Result">
+    <part name="parameters" element="tns:GetRecIdFromKey_Result" />
+  </message>
+  <message name="Create">
+    <part name="parameters" element="tns:Create" />
+  </message>
+  <message name="Create_Result">
+    <part name="parameters" element="tns:Create_Result" />
+  </message>
+  <message name="CreateMultiple">
+    <part name="parameters" element="tns:CreateMultiple" />
+  </message>
+  <message name="CreateMultiple_Result">
+    <part name="parameters" element="tns:CreateMultiple_Result" />
+  </message>
+  <message name="Update">
+    <part name="parameters" element="tns:Update" />
+  </message>
+  <message name="Update_Result">
+    <part name="parameters" element="tns:Update_Result" />
+  </message>
+  <message name="UpdateMultiple">
+    <part name="parameters" element="tns:UpdateMultiple" />
+  </message>
+  <message name="UpdateMultiple_Result">
+    <part name="parameters" element="tns:UpdateMultiple_Result" />
+  </message>
+  <message name="Delete">
+    <part name="parameters" element="tns:Delete" />
+  </message>
+  <message name="Delete_Result">
+    <part name="parameters" element="tns:Delete_Result" />
+  </message>
+  <portType name="workflowGenJournalLines_Port">
+    <operation name="Read">
+      <input name="Read" message="tns:Read" />
+      <output name="Read_Result" message="tns:Read_Result" />
+    </operation>
+    <operation name="ReadByRecId">
+      <input name="ReadByRecId" message="tns:ReadByRecId" />
+      <output name="ReadByRecId_Result" message="tns:ReadByRecId_Result" />
+    </operation>
+    <operation name="ReadMultiple">
+      <input name="ReadMultiple" message="tns:ReadMultiple" />
+      <output name="ReadMultiple_Result" message="tns:ReadMultiple_Result" />
+    </operation>
+    <operation name="IsUpdated">
+      <input name="IsUpdated" message="tns:IsUpdated" />
+      <output name="IsUpdated_Result" message="tns:IsUpdated_Result" />
+    </operation>
+    <operation name="GetRecIdFromKey">
+      <input name="GetRecIdFromKey" message="tns:GetRecIdFromKey" />
+      <output name="GetRecIdFromKey_Result" message="tns:GetRecIdFromKey_Result" />
+    </operation>
+    <operation name="Create">
+      <input name="Create" message="tns:Create" />
+      <output name="Create_Result" message="tns:Create_Result" />
+    </operation>
+    <operation name="CreateMultiple">
+      <input name="CreateMultiple" message="tns:CreateMultiple" />
+      <output name="CreateMultiple_Result" message="tns:CreateMultiple_Result" />
+    </operation>
+    <operation name="Update">
+      <input name="Update" message="tns:Update" />
+      <output name="Update_Result" message="tns:Update_Result" />
+    </operation>
+    <operation name="UpdateMultiple">
+      <input name="UpdateMultiple" message="tns:UpdateMultiple" />
+      <output name="UpdateMultiple_Result" message="tns:UpdateMultiple_Result" />
+    </operation>
+    <operation name="Delete">
+      <input name="Delete" message="tns:Delete" />
+      <output name="Delete_Result" message="tns:Delete_Result" />
+    </operation>
+  </portType>
+  <binding name="workflowGenJournalLines_Binding" type="tns:workflowGenJournalLines_Port">
+    <binding transport="http://schemas.xmlsoap.org/soap/http" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    <operation name="Read">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/workflowgenjournallines:Read" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="Read">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="Read_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ReadByRecId">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/workflowgenjournallines:ReadByRecId" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ReadByRecId">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ReadByRecId_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ReadMultiple">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/workflowgenjournallines:ReadMultiple" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ReadMultiple">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ReadMultiple_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="IsUpdated">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/workflowgenjournallines:IsUpdated" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="IsUpdated">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="IsUpdated_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetRecIdFromKey">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/workflowgenjournallines:GetRecIdFromKey" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetRecIdFromKey">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetRecIdFromKey_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="Create">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/workflowgenjournallines:Create" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="Create">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="Create_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CreateMultiple">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/workflowgenjournallines:CreateMultiple" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CreateMultiple">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CreateMultiple_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="Update">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/workflowgenjournallines:Update" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="Update">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="Update_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="UpdateMultiple">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/workflowgenjournallines:UpdateMultiple" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="UpdateMultiple">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="UpdateMultiple_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="Delete">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/workflowgenjournallines:Delete" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="Delete">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="Delete_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+  </binding>
+  <service name="workflowGenJournalLines_Service">
+    <port name="workflowGenJournalLines_Port" binding="tns:workflowGenJournalLines_Binding">
+      <address location="http://192.168.0.192:7047/DynamicsNAV110/WS/ERPSPEZ/Page/workflowGenJournalLines" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    </port>
+  </service>
+</definitions>

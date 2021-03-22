@@ -1,0 +1,180 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="MVVMLightFramework.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="MVVMLightFramework_WebService_ExcelTemplateAgedAccountsPayable_Service" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://192.168.0.192:7047/DynamicsNAV110/WS/ERPSPEZ/Page/ExcelTemplateAgedAccountsPayable</Value>
+    </Setting>
+    <Setting Name="MVVMLightFramework_WebService_Power_BI_Aged_Inventory_Chart_Service" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://192.168.0.192:7047/DynamicsNAV110/WS/ERPSPEZ/Page/Power_BI_Aged_Inventory_Chart</Value>
+    </Setting>
+    <Setting Name="MVVMLightFramework_WebService_powerbifinance_Service" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://192.168.0.192:7047/DynamicsNAV110/WS/ERPSPEZ/Page/powerbifinance</Value>
+    </Setting>
+    <Setting Name="MVVMLightFramework_WebService_ExcelTemplateRetainedEarnings_Service" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://192.168.0.192:7047/DynamicsNAV110/WS/ERPSPEZ/Page/ExcelTemplateRetainedEarnings</Value>
+    </Setting>
+    <Setting Name="MVVMLightFramework_WebService_Power_BI_Vertriebspipeline_Service" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://192.168.0.192:7047/DynamicsNAV110/WS/ERPSPEZ/Page/Power_BI_Vertriebspipeline</Value>
+    </Setting>
+    <Setting Name="MVVMLightFramework_WebService_Power_BI_Arbeitsdatumberech_Service" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://192.168.0.192:7047/DynamicsNAV110/WS/ERPSPEZ/Page/Power_BI_Arbeitsdatumberech</Value>
+    </Setting>
+    <Setting Name="MVVMLightFramework_WebService_Power_BI_Budgetvergleich_Projektpreis_Service" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://192.168.0.192:7047/DynamicsNAV110/WS/ERPSPEZ/Page/Power_BI_Budgetvergleich_Projektpreis</Value>
+    </Setting>
+    <Setting Name="MVVMLightFramework_WebService_ExcelTemplateViewCompanyInformation_Service" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://192.168.0.192:7047/DynamicsNAV110/WS/ERPSPEZ/Page/ExcelTemplateViewCompanyInformation</Value>
+    </Setting>
+    <Setting Name="MVVMLightFramework_WebService_Power_BI_Aged_Acc_Payable_Service" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://192.168.0.192:7047/DynamicsNAV110/WS/ERPSPEZ/Page/Power_BI_Aged_Acc_Payable</Value>
+    </Setting>
+    <Setting Name="MVVMLightFramework_WebService_workflowPurchaseDocumentLines_Service" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://192.168.0.192:7047/DynamicsNAV110/WS/ERPSPEZ/Page/workflowPurchaseDocumentLines</Value>
+    </Setting>
+    <Setting Name="MVVMLightFramework_WebService_ExcelTemplateTrialBalance_Service" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://192.168.0.192:7047/DynamicsNAV110/WS/ERPSPEZ/Page/ExcelTemplateTrialBalance</Value>
+    </Setting>
+    <Setting Name="MVVMLightFramework_WebService_workflowSalesDocumentLines_Service" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://192.168.0.192:7047/DynamicsNAV110/WS/ERPSPEZ/Page/workflowSalesDocumentLines</Value>
+    </Setting>
+    <Setting Name="MVVMLightFramework_WebService_SalesOrder_Service" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://192.168.0.192:7047/DynamicsNAV110/WS/ERPSPEZ/Page/SalesOrder</Value>
+    </Setting>
+    <Setting Name="MVVMLightFramework_WebService_ExcelTemplateBalanceSheet_Service" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://192.168.0.192:7047/DynamicsNAV110/WS/ERPSPEZ/Page/ExcelTemplateBalanceSheet</Value>
+    </Setting>
+    <Setting Name="MVVMLightFramework_WebService_AccountantPortalActivityCues_Service" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://192.168.0.192:7047/DynamicsNAV110/WS/ERPSPEZ/Page/AccountantPortalActivityCues</Value>
+    </Setting>
+    <Setting Name="MVVMLightFramework_WebService_workflowPurchaseDocuments_Service" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://192.168.0.192:7047/DynamicsNAV110/WS/ERPSPEZ/Page/workflowPurchaseDocuments</Value>
+    </Setting>
+    <Setting Name="MVVMLightFramework_WebService_workflowGenJournalBatches_Service" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://192.168.0.192:7047/DynamicsNAV110/WS/ERPSPEZ/Page/workflowGenJournalBatches</Value>
+    </Setting>
+    <Setting Name="MVVMLightFramework_WebService_AccountantPortalFinanceCues_Service" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://192.168.0.192:7047/DynamicsNAV110/WS/ERPSPEZ/Page/AccountantPortalFinanceCues</Value>
+    </Setting>
+    <Setting Name="MVVMLightFramework_WebService_Chart_of_Accounts_Service" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://192.168.0.192:7047/DynamicsNAV110/WS/ERPSPEZ/Page/Chart_of_Accounts</Value>
+    </Setting>
+    <Setting Name="MVVMLightFramework_WebService_workflowSalesDocuments_Service" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://192.168.0.192:7047/DynamicsNAV110/WS/ERPSPEZ/Page/workflowSalesDocuments</Value>
+    </Setting>
+    <Setting Name="MVVMLightFramework_WebService_Power_BI_Aged_Acc_Receivable_Service" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://192.168.0.192:7047/DynamicsNAV110/WS/ERPSPEZ/Page/Power_BI_Aged_Acc_Receivable</Value>
+    </Setting>
+    <Setting Name="MVVMLightFramework_WebService_purchaseDocumentLines_Service" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://192.168.0.192:7047/DynamicsNAV110/WS/ERPSPEZ/Page/purchaseDocumentLines</Value>
+    </Setting>
+    <Setting Name="MVVMLightFramework_WebService_Power_BI_Lagerrückblickdiagramm_Service" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://192.168.0.192:7047/DynamicsNAV110/WS/ERPSPEZ/Page/Power_BI_Lagerr%C3%BCckblickdiagramm</Value>
+    </Setting>
+    <Setting Name="MVVMLightFramework_WebService_workflowWebhookSubscriptions_Service" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://192.168.0.192:7047/DynamicsNAV110/WS/ERPSPEZ/Page/workflowWebhookSubscriptions</Value>
+    </Setting>
+    <Setting Name="MVVMLightFramework_WebService_Power_BI_Debitor_Saldenrückblick_Service" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://192.168.0.192:7047/DynamicsNAV110/WS/ERPSPEZ/Page/Power_BI_Debitor_Saldenr%C3%BCckblick</Value>
+    </Setting>
+    <Setting Name="MVVMLightFramework_WebService_UserTaskSetComplete_Service" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://192.168.0.192:7047/DynamicsNAV110/WS/ERPSPEZ/Page/UserTaskSetComplete</Value>
+    </Setting>
+    <Setting Name="MVVMLightFramework_WebService_workflowVendors_Service" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://192.168.0.192:7047/DynamicsNAV110/WS/ERPSPEZ/Page/workflowVendors</Value>
+    </Setting>
+    <Setting Name="MVVMLightFramework_WebService_Projektaufgabenzeilen_Service" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://192.168.0.192:7047/DynamicsNAV110/WS/ERPSPEZ/Page/Projektaufgabenzeilen</Value>
+    </Setting>
+    <Setting Name="MVVMLightFramework_WebService_SPS_Service" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://192.168.0.192:7047/DynamicsNAV110/WS/ERPSPEZ/Page/SPS</Value>
+    </Setting>
+    <Setting Name="MVVMLightFramework_WebService_Projektplanzeilen_Service" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://192.168.0.192:7047/DynamicsNAV110/WS/ERPSPEZ/Page/Projektplanzeilen</Value>
+    </Setting>
+    <Setting Name="MVVMLightFramework_WebService_workflowCustomers_Service" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://192.168.0.192:7047/DynamicsNAV110/WS/ERPSPEZ/Page/workflowCustomers</Value>
+    </Setting>
+    <Setting Name="MVVMLightFramework_WebService_ExcelTemplateAgedAccountsReceivable_Service" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://192.168.0.192:7047/DynamicsNAV110/WS/ERPSPEZ/Page/ExcelTemplateAgedAccountsReceivable</Value>
+    </Setting>
+    <Setting Name="MVVMLightFramework_WebService_Job_Planning_Lines_Service" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://192.168.0.192:7047/DynamicsNAV110/WS/ERPSPEZ/Page/Job_Planning_Lines</Value>
+    </Setting>
+    <Setting Name="MVVMLightFramework_WebService_Power_BI_Job_Act_v_Budg_Cost_Service" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://192.168.0.192:7047/DynamicsNAV110/WS/ERPSPEZ/Page/Power_BI_Job_Act_v_Budg_Cost</Value>
+    </Setting>
+    <Setting Name="MVVMLightFramework_WebService_SystemService" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://192.168.0.192:7047/DynamicsNAV110/WS/ERPSPEZ/SystemService</Value>
+    </Setting>
+    <Setting Name="MVVMLightFramework_WebService_Power_BI_Projektrentabilität_Service" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://192.168.0.192:7047/DynamicsNAV110/WS/ERPSPEZ/Page/Power_BI_Projektrentabilit%C3%A4t</Value>
+    </Setting>
+    <Setting Name="MVVMLightFramework_WebService_WorkflowActionResponse" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://192.168.0.192:7047/DynamicsNAV110/WS/ERPSPEZ/Codeunit/WorkflowActionResponse</Value>
+    </Setting>
+    <Setting Name="MVVMLightFramework_WebService_ExcelTemplateCashFlowStatement_Service" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://192.168.0.192:7047/DynamicsNAV110/WS/ERPSPEZ/Page/ExcelTemplateCashFlowStatement</Value>
+    </Setting>
+    <Setting Name="MVVMLightFramework_WebService_Power_BI_Top_5_Verkaufschancen_Service" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://192.168.0.192:7047/DynamicsNAV110/WS/ERPSPEZ/Page/Power_BI_Top_5_Verkaufschancen</Value>
+    </Setting>
+    <Setting Name="MVVMLightFramework_WebService_Power_BI_Sales_Pipeline_Service" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://localhost:7047/DynamicsNAV110/WS/ERPSPEZ/Page/Power_BI_Sales_Pipeline</Value>
+    </Setting>
+    <Setting Name="MVVMLightFramework_WebService_Power_BI_Job_Profitability_Service" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://192.168.0.192:7047/DynamicsNAV110/WS/ERPSPEZ/Page/Power_BI_Job_Profitability</Value>
+    </Setting>
+    <Setting Name="MVVMLightFramework_WebService_salesDocuments_Service" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://192.168.0.192:7047/DynamicsNAV110/WS/ERPSPEZ/Page/salesDocuments</Value>
+    </Setting>
+    <Setting Name="MVVMLightFramework_WebService_workflowGenJournalLines_Service" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://192.168.0.192:7047/DynamicsNAV110/WS/ERPSPEZ/Page/workflowGenJournalLines</Value>
+    </Setting>
+    <Setting Name="MVVMLightFramework_WebService_Power_BI_Kreditor_Saldenrückblick_Service" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://192.168.0.192:7047/DynamicsNAV110/WS/ERPSPEZ/Page/Power_BI_Kreditor_Saldenr%C3%BCckblick</Value>
+    </Setting>
+    <Setting Name="MVVMLightFramework_WebService_Kontenplan_Service" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://192.168.0.192:7047/DynamicsNAV110/WS/ERPSPEZ/Page/Kontenplan</Value>
+    </Setting>
+    <Setting Name="MVVMLightFramework_WebService_AccountantPortalUserTasks_Service" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://192.168.0.192:7047/DynamicsNAV110/WS/ERPSPEZ/Page/AccountantPortalUserTasks</Value>
+    </Setting>
+    <Setting Name="MVVMLightFramework_WebService_Projektübersicht_Service" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://192.168.0.192:7047/DynamicsNAV110/WS/ERPSPEZ/Page/Projekt%C3%BCbersicht</Value>
+    </Setting>
+    <Setting Name="MVVMLightFramework_WebService_Power_BI_Budgetvergleich_Projektkosten_Service" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://192.168.0.192:7047/DynamicsNAV110/WS/ERPSPEZ/Page/Power_BI_Budgetvergleich_Projektkosten</Value>
+    </Setting>
+    <Setting Name="MVVMLightFramework_WebService_ExcelTemplateIncomeStatement_Service" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://192.168.0.192:7047/DynamicsNAV110/WS/ERPSPEZ/Page/ExcelTemplateIncomeStatement</Value>
+    </Setting>
+    <Setting Name="MVVMLightFramework_WebService_Power_BI_WorkDate_Calc_Service" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://192.168.0.192:7047/DynamicsNAV110/WS/ERPSPEZ/Page/Power_BI_WorkDate_Calc</Value>
+    </Setting>
+    <Setting Name="MVVMLightFramework_WebService_Job_Task_Lines_Service" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://192.168.0.192:7047/DynamicsNAV110/WS/ERPSPEZ/Page/Job_Task_Lines</Value>
+    </Setting>
+    <Setting Name="MVVMLightFramework_WebService_Power_BI_Job_Act_v_Budg_Price_Service" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://192.168.0.192:7047/DynamicsNAV110/WS/ERPSPEZ/Page/Power_BI_Job_Act_v_Budg_Price</Value>
+    </Setting>
+    <Setting Name="MVVMLightFramework_WebService_Power_BI_Top_5_Opportunities_Service" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://192.168.0.192:7047/DynamicsNAV110/WS/ERPSPEZ/Page/Power_BI_Top_5_Opportunities</Value>
+    </Setting>
+    <Setting Name="MVVMLightFramework_WebService_Job_List_Service" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://192.168.0.192:7047/DynamicsNAV110/WS/ERPSPEZ/Page/Job_List</Value>
+    </Setting>
+    <Setting Name="MVVMLightFramework_WebService_workflowItems_Service" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://192.168.0.192:7047/DynamicsNAV110/WS/ERPSPEZ/Page/workflowItems</Value>
+    </Setting>
+    <Setting Name="MVVMLightFramework_WebService_purchaseDocuments_Service" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://192.168.0.192:7047/DynamicsNAV110/WS/ERPSPEZ/Page/purchaseDocuments</Value>
+    </Setting>
+    <Setting Name="MVVMLightFramework_WebService_Customer_Service" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://192.168.0.192:7047/DynamicsNAV110/WS/ERPSPEZ/Page/Customer</Value>
+    </Setting>
+    <Setting Name="MVVMLightFramework_WebService_salesDocumentLines_Service" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://192.168.0.192:7047/DynamicsNAV110/WS/ERPSPEZ/Page/salesDocumentLines</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

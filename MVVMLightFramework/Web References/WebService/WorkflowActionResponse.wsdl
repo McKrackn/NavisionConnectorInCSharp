@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:tns="urn:microsoft-dynamics-schemas/codeunit/WorkflowActionResponse" targetNamespace="urn:microsoft-dynamics-schemas/codeunit/WorkflowActionResponse" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <schema elementFormDefault="qualified" targetNamespace="urn:microsoft-dynamics-schemas/codeunit/WorkflowActionResponse" xmlns="http://www.w3.org/2001/XMLSchema">
+      <element name="Approve">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="workflowStepInstanceId" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="Approve_Result">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="Reject">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="workflowStepInstanceId" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="Reject_Result">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+    </schema>
+  </types>
+  <message name="Approve">
+    <part name="parameters" element="tns:Approve" />
+  </message>
+  <message name="Approve_Result">
+    <part name="parameters" element="tns:Approve_Result" />
+  </message>
+  <message name="Reject">
+    <part name="parameters" element="tns:Reject" />
+  </message>
+  <message name="Reject_Result">
+    <part name="parameters" element="tns:Reject_Result" />
+  </message>
+  <portType name="WorkflowActionResponse_Port">
+    <operation name="Approve">
+      <input name="Approve" message="tns:Approve" />
+      <output name="Approve_Result" message="tns:Approve_Result" />
+    </operation>
+    <operation name="Reject">
+      <input name="Reject" message="tns:Reject" />
+      <output name="Reject_Result" message="tns:Reject_Result" />
+    </operation>
+  </portType>
+  <binding name="WorkflowActionResponse_Binding" type="tns:WorkflowActionResponse_Port">
+    <binding transport="http://schemas.xmlsoap.org/soap/http" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    <operation name="Approve">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/WorkflowActionResponse:Approve" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="Approve">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="Approve_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="Reject">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/WorkflowActionResponse:Reject" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="Reject">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="Reject_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+  </binding>
+  <service name="WorkflowActionResponse">
+    <port name="WorkflowActionResponse_Port" binding="tns:WorkflowActionResponse_Binding">
+      <address location="http://192.168.0.192:7047/DynamicsNAV110/WS/ERPSPEZ/Codeunit/WorkflowActionResponse" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    </port>
+  </service>
+</definitions>
