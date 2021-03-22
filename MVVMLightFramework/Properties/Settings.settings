@@ -176,5 +176,11 @@
     <Setting Name="MVVMLightFramework_WebService_salesDocumentLines_Service" Type="System.String" Scope="Application">
       <Value Profile="(Default)">http://192.168.0.192:7047/DynamicsNAV110/WS/ERPSPEZ/Page/salesDocumentLines</Value>
     </Setting>
+    <Setting Name="MVVMLightFramework_WebService_CreateTask_Service" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://192.168.0.192:7047/DynamicsNAV110/WS/ERPSPEZ/Page/CreateTask</Value>
+    </Setting>
+    <Setting Name="MVVMLightFramework_WebService_CreateTaskTry_Service" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://192.168.0.192:7047/DynamicsNAV110/WS/ERPSPEZ/Page/CreateTaskTry</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

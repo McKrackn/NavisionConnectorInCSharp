@@ -5,6 +5,8 @@
   <contractRef ref="http://192.168.0.192:7047/DynamicsNAV110/WS/ERPSPEZ/Page/AccountantPortalActivityCues" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
   <contractRef ref="http://192.168.0.192:7047/DynamicsNAV110/WS/ERPSPEZ/Page/AccountantPortalFinanceCues" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
   <contractRef ref="http://192.168.0.192:7047/DynamicsNAV110/WS/ERPSPEZ/Page/AccountantPortalUserTasks" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+  <contractRef ref="http://192.168.0.192:7047/DynamicsNAV110/WS/ERPSPEZ/Page/CreateTask" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+  <contractRef ref="http://192.168.0.192:7047/DynamicsNAV110/WS/ERPSPEZ/Page/CreateTaskTry" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
   <contractRef ref="http://192.168.0.192:7047/DynamicsNAV110/WS/ERPSPEZ/Page/Customer" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
   <contractRef ref="http://192.168.0.192:7047/DynamicsNAV110/WS/ERPSPEZ/Page/ExcelTemplateAgedAccountsPayable" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
   <contractRef ref="http://192.168.0.192:7047/DynamicsNAV110/WS/ERPSPEZ/Page/ExcelTemplateAgedAccountsReceivable" xmlns="http://schemas.xmlsoap.org/disco/scl/" />

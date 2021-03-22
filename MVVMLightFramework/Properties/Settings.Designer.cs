@@ -578,5 +578,23 @@ namespace MVVMLightFramework.Properties {
                 return ((string)(this["MVVMLightFramework_WebService_salesDocumentLines_Service"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://192.168.0.192:7047/DynamicsNAV110/WS/ERPSPEZ/Page/CreateTask")]
+        public string MVVMLightFramework_WebService_CreateTask_Service {
+            get {
+                return ((string)(this["MVVMLightFramework_WebService_CreateTask_Service"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://192.168.0.192:7047/DynamicsNAV110/WS/ERPSPEZ/Page/CreateTaskTry")]
+        public string MVVMLightFramework_WebService_CreateTaskTry_Service {
+            get {
+                return ((string)(this["MVVMLightFramework_WebService_CreateTaskTry_Service"]));
+            }
+        }
     }
 }

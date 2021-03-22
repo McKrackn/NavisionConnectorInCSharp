@@ -40,12 +40,12 @@
                                 </TextBlock>
                                 <Label HorizontalContentAlignment="Left" Content="{Binding Calcd_Current_Value_LCY, UpdateSourceTrigger=PropertyChanged}" Margin="5,3" FontWeight="Bold" FontSize="18" BorderThickness="0,2,0,0" BorderBrush="Black" ContentStringFormat="€ 0,000.00"/>
                                 <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-                                    <Button BorderThickness="0" Height="30" Width="30" Margin="10,0" Command="{Binding }">
+                                    <Button BorderThickness="0" Height="30" Width="30" Margin="10,0" CommandParameter="{Binding Code}" Command="{Binding Main.FireClickCommand, Source={StaticResource Locator}}">
                                         <Button.Background>
                                             <ImageBrush ImageSource="media/dislike.jpg"/>
                                         </Button.Background>
                                     </Button>
-                                    <Button BorderThickness="0" Height="30" Width="30" Margin="10,0" Command="{Binding }">
+                                    <Button BorderThickness="0" Height="30" Width="30" Margin="10,0" CommandParameter="{Binding Code}" Command="{Binding Main.PromoteClickCommand, Source={StaticResource Locator}}">
                                         <Button.Background>
                                             <ImageBrush ImageSource="media/like.jpg"/>
                                         </Button.Background>

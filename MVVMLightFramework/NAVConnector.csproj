@@ -131,6 +131,14 @@
       <DependentUpon>Reference.map</DependentUpon>
     </None>
     <None Include="Web References\WebService\Chart_of_Accounts.wsdl" />
+    <None Include="Web References\WebService\CreateTask.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\WebService\CreateTask.wsdl" />
+    <None Include="Web References\WebService\CreateTaskTry.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\WebService\CreateTaskTry.wsdl" />
     <None Include="Web References\WebService\Customer.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
