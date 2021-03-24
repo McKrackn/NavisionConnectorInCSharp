@@ -1,4 +1,5 @@
 using System;
+using System.Collections.ObjectModel;
 using System.Net;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
@@ -8,15 +9,29 @@ namespace MVVMLightFramework.ViewModel
 {
     public class MainViewModel : ViewModelBase
     {
-
+        public RelayCommand NAVConnectCommand { get; set; }
         public RelayCommand<string> FireClickCommand { get; set; }
         public RelayCommand<string> PromoteClickCommand { get; set; }
-        private SPS[] _spsArray;
-        public SPS[] SpsArray
+        public string Pass { get; set; } = "zak";
+        public string User { get; set; } = "DESKTOP-2K6GVM4\\mckracken";
+        public string HeaderMessage { get; set; } = "... ready to connect ...";
+        private string _url = "http://192.168.0.192:7047/DynamicsNAV110/WS/ERPSPEZ/";
+        public string Url
         {
-            get => _spsArray;
-            set { _spsArray = value; RaisePropertyChanged(); }
+            get => _url;
+            set
+            {
+                _url = value;
+                RaisePropertyChanged();
+            }
         }
+        private string _nameVisibility = "True";
+        public string NameVisibility
+        {
+            get => _nameVisibility;
+            set { _nameVisibility = value; RaisePropertyChanged(); }
+        }
+        public ObservableCollection<SalesPerson> SalesPersons { get; set; } = new ObservableCollection<SalesPerson>();
         private CreateTask[] _taskArray;
         public CreateTask[] TaskArray
         {
@@ -24,30 +39,56 @@ namespace MVVMLightFramework.ViewModel
             set { _taskArray = value; RaisePropertyChanged(); }
         }
         public decimal SumAmounts { get; set; }
-
         public MainViewModel()
         {
-            SPS_Binding service = new SPS_Binding();
-            service.UseDefaultCredentials = false;
-            service.Credentials=new NetworkCredential("DESKTOP-2K6GVM4\\mckracken", "zak");
+            NAVConnectCommand = new RelayCommand(() =>
+                {
+                    SPS_Binding service = new SPS_Binding();
+                    service.Url = Url + "Page/SPS";
+                    service.UseDefaultCredentials = false;
+                    service.Credentials = new NetworkCredential(User, Pass);
+
+                    try
+                    {
+                        SPS[] spsArray = service.ReadMultiple(null, null, 100);
+                        foreach (SPS spse in spsArray)
+                        {
+                            SalesPerson tmp = new SalesPerson(spse);
+                            SalesPersons.Add(tmp);
+                        }
+                        foreach (SalesPerson actSalesperson in SalesPersons)
+                        {
+                            SumAmounts += actSalesperson.Sps.Calcd_Current_Value_LCY;
+                        }
+                        NameVisibility = "False";
+                        HeaderMessage = "Calculated Revenues per Salesperson, total " + SumAmounts.ToString("C2");
+                        RaisePropertyChanged("HeaderMessage");
+                        NAVConnectCommand.RaiseCanExecuteChanged();
+                    }
+                    catch (WebException)
+                    {
+                        HeaderMessage = "Connection failed";
+                        RaisePropertyChanged("HeaderMessage");
+                    }
+                },
+                () => NameVisibility == "True");
             
-            SpsArray = service.ReadMultiple(null, null, 100);
-            foreach (SPS actSPS in SpsArray)
-            {
-                SumAmounts += actSPS.Calcd_Current_Value_LCY;
-            }
 
             FireClickCommand = new RelayCommand<string>((tt) =>
             {
                 decimal ownAmount = 0;
-                foreach (SPS actSPS in SpsArray)
+                foreach (SalesPerson actSalesPerson in SalesPersons)
                 {
-                    if (actSPS.Code == tt) ownAmount = actSPS.Calcd_Current_Value_LCY;
+                    if (actSalesPerson.Sps.Code == tt)
+                    {
+                        ownAmount = actSalesPerson.Sps.Calcd_Current_Value_LCY;
+                        actSalesPerson.Sentmessage = "FIRED";
+                    }
                 }
                 CreateTaskTry_Binding taskBinding = new CreateTaskTry_Binding
                 {
                     UseDefaultCredentials = false,
-                    Credentials = new NetworkCredential("DESKTOP-2K6GVM4\\mckracken", "zak")
+                    Credentials = new NetworkCredential(User, Pass)
                 };
                 CreateTaskTry newCreateTaskTry = new CreateTaskTry
                 {
@@ -65,14 +106,18 @@ namespace MVVMLightFramework.ViewModel
             PromoteClickCommand = new RelayCommand<string>((tt) =>
             {
                 decimal ownAmount=0;
-                foreach (SPS actSPS in SpsArray)
+                foreach (SalesPerson actSalesPerson in SalesPersons)
                 {
-                    if (actSPS.Code == tt) ownAmount = actSPS.Calcd_Current_Value_LCY;
+                    if (actSalesPerson.Sps.Code == tt)
+                    {
+                        ownAmount = actSalesPerson.Sps.Calcd_Current_Value_LCY;
+                        actSalesPerson.Sentmessage = "FEIERT";
+                    }
                 }
                 CreateTaskTry_Binding taskBinding = new CreateTaskTry_Binding
                 {
                     UseDefaultCredentials = false,
-                    Credentials = new NetworkCredential("DESKTOP-2K6GVM4\\mckracken", "zak")
+                    Credentials = new NetworkCredential(User,Pass)
                 };
                 CreateTaskTry newCreateTaskTry = new CreateTaskTry
                 {
